@@ -3,10 +3,7 @@ from geopy.geocoders import Nominatim
 import datetime as dt
 import meteomatics.api as api
 from runnow_helper import run_now_raw 
-from secret_key import meteomatics_username,meteomatics_password
 
-username = meteomatics_username
-password = meteomatics_password
 
 
 def main():
