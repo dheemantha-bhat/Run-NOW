@@ -1,9 +1,11 @@
 from geopy.geocoders import Nominatim
 import datetime as dt
 import meteomatics.api as api
+from secret_key import meteomatics_username,meteomatics_password
 
-username= 'unemp_bhat_dheemantha'
-password= 'f5U0X1Ih6x'
+username = meteomatics_username
+password = meteomatics_password
+
 
 def run_now_raw(location,acc=10): 
 
