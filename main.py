@@ -9,21 +9,28 @@ from runnow_helper import run_now_raw
 def main():
     st.title("Can I Run NOW?")
 
-    # Get user input
     input_string = st.text_input("Enter your location")
     
     depth = st.slider("Depth in hours", min_value=3, max_value=18, value=10)
 
-    # Process the input (you can customize this based on your requirements)
     waterlogging = run_now_raw(input_string,depth)
-    # Display the output
+
     if st.button("Predict"): 
-      st.write("Waterlogging severity is", waterlogging)
+      st.write("Waterlogging severity")
+      
+      if waterlogging=='High':
+        st.markdown(''':red[High]''')
+      if waterlogging=='Medium':
+        st.markdown(''':orange[Medium]''')
+      else:
+        st.markdown(''':green[Low]''' )
 
+    st.subheader('Usage Instructions')
 
-    st.text("Usage Instructions")
-
-    
+    st.text('Run-NOW predicts waterlogging severity based on observed rainfall.')
+    st.text('Step 1 : Enter the location in search bar ')
+    st.text('Step 2 : Choose the depth of prediction i.e. Number of hours of observed rainfall \n used for prediction')
+ 
 
 if __name__ == "__main__":
     main()

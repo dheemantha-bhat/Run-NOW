@@ -16,7 +16,7 @@ def run_now_raw(location,acc=10):
     startdate  = enddate - dt.timedelta(hours=acc)
     interval = dt.timedelta(hours=1)
 
-    df = api.query_time_series(coordinates, startdate, enddate, interval, parameters, username, password, model=model).reset_index()['precip_1h:mm'].values
+    df = api.query_time_series(coordinates, startdate, enddate, interval, parameters, username, password, model=model).reset_index()['precip_1h:mm'].values * 50
     
     water_log_score = waterlog_calculate(df)
     logging='High'
@@ -44,7 +44,6 @@ def waterlog_calculate(x):
     hours = len(x)
 
     for i in x:
-        #print(log,hours)
         log = i - hours
         hours = hours -1
         if log<0:
