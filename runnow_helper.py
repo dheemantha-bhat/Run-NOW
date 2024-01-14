@@ -1,13 +1,12 @@
 from geopy.geocoders import Nominatim
 import datetime as dt
 import meteomatics.api as api
-from secret_key import meteomatics_username,meteomatics_password
-
-username = meteomatics_username
-password = meteomatics_password
 
 
 def run_now_raw(location,acc=10): 
+    
+    username = api_key
+    password = secret_key
 
     coordinates = get_coordinates(location)
     parameters = ['precip_1h:mm']
@@ -17,7 +16,7 @@ def run_now_raw(location,acc=10):
     interval = dt.timedelta(hours=1)
 
     df = api.query_time_series(coordinates, startdate, enddate, interval, parameters, username, password, model=model).reset_index()['precip_1h:mm'].values * 50
-    
+
     water_log_score = waterlog_calculate(df)
     logging='High'
     if water_log_score<2:
