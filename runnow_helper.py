@@ -3,7 +3,7 @@ import datetime as dt
 import meteomatics.api as api
 
 
-def run_now_raw(location,acc=10): 
+def run_now_raw(location,acc,api_key,secret_key): 
     
     username = api_key
     password = secret_key
